@@ -73,10 +73,6 @@ function App() {
             rel="stylesheet"
             href="https://unpkg.com/@shopify/polaris@7.3.1/build/esm/styles.css"
           />
-          <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          ></link>
           {images.length != 0 &&
             images.map((image, index) => {
               image.date = image.date + "";

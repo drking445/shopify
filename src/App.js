@@ -12,6 +12,7 @@ function App() {
   const [isClick, setClick] = useState(false);
   let color = "#ffffff";
   let loading = true;
+  var containerClass = "";
 
   const override = css`
     display: block;
@@ -68,7 +69,7 @@ function App() {
           </div>
         </div>
       ) : (
-        <div style={{ backgroundColor: "grey" }}>
+        <div class="timeline" style={{ backgroundColor: "#474e5d" }}>
           <link
             rel="stylesheet"
             href="https://unpkg.com/@shopify/polaris@7.3.1/build/esm/styles.css"
@@ -87,47 +88,52 @@ function App() {
                 status = "Like";
               }
 
+              if (containerClass === "") {
+                containerClass = "container left";
+              } else if (containerClass === "container left") {
+                containerClass = "container right";
+              } else {
+                containerClass = "container left";
+              }
+
               return (
-                <div
-                  style={{
-                    backgroundColor: "white",
-                    display: "block",
-                  }}
-                >
-                  <img
-                    style={{
-                      height: 500,
-                    }}
-                    src={
-                      "https://epic.gsfc.nasa.gov/archive/natural/" +
-                      date +
-                      "/png/" +
-                      image.image +
-                      ".png"
-                    }
-                  />
-                  <div>
-                    <b>{image.caption}</b>
-                  </div>
-                  <br />
-                  <div style={{ paddingBottom: "15px" }}>{image.date}</div>
-                  <div style={{ marginBottom: "50px"}}>
-                    <AppProvider i18n={enTranslations}>
-                      <Button
-                        onClick={(e) => {
-                          status === "Like"
-                            ? (e.target.innerHTML = "Unlike")
-                            : (e.target.innerHTML = "Like");
-                          status === "Like"
-                            ? (status = "Unlike")
-                            : (status = "Like");
-                          setStatus(index, status);
-                          setClick(!isClick)
-                        }}
-                      >
-                        {status}
-                      </Button>
-                    </AppProvider>
+                <div class={containerClass}>
+                  <div class="content">
+                    <img
+                      style={{
+                        height: 300,
+                      }}
+                      src={
+                        "https://epic.gsfc.nasa.gov/archive/natural/" +
+                        date +
+                        "/png/" +
+                        image.image +
+                        ".png"
+                      }
+                    />
+                    <div>
+                      <b>{image.caption}</b>
+                    </div>
+                    <br />
+                    <div style={{ paddingBottom: "15px" }}>{image.date}</div>
+                    <div style={{ marginBottom: "50px" }}>
+                      <AppProvider i18n={enTranslations}>
+                        <Button
+                          onClick={(e) => {
+                            status === "Like"
+                              ? (e.target.innerHTML = "Unlike")
+                              : (e.target.innerHTML = "Like");
+                            status === "Like"
+                              ? (status = "Unlike")
+                              : (status = "Like");
+                            setStatus(index, status);
+                            setClick(!isClick);
+                          }}
+                        >
+                          {status}
+                        </Button>
+                      </AppProvider>
+                    </div>
                   </div>
                 </div>
               );

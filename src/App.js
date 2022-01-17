@@ -9,7 +9,6 @@ function App() {
   const key = "g4xk1gooLdtYH1Rl9QsmniVVbnlvrhDlqUiDo59S";
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isClick, setClick] = useState(false);
   let color = "#ffffff";
   let loading = true;
   var containerClass = "";
@@ -127,7 +126,6 @@ function App() {
                               ? (status = "Unlike")
                               : (status = "Like");
                             setStatus(index, status);
-                            setClick(!isClick);
                           }}
                         >
                           {status}

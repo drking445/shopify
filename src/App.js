@@ -2,22 +2,13 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import enTranslations from "@shopify/polaris/locales/en.json";
 import { AppProvider, Button } from "@shopify/polaris";
-import ClipLoader from "react-spinners/ClipLoader";
-import { css } from "@emotion/react";
+import { CommonLoading } from "react-loadingg";
 
 function App() {
   const key = "g4xk1gooLdtYH1Rl9QsmniVVbnlvrhDlqUiDo59S";
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  let color = "#ffffff";
-  let loading = true;
   var containerClass = "";
-
-  const override = css`
-    display: block;
-    margin: 0 auto;
-    border-color: red;
-  `;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,22 +41,7 @@ function App() {
     <>
       {isLoading ? (
         <div style={{ textAlign: "center" }}>
-          <ClipLoader
-            color={color}
-            loading={loading}
-            css={override}
-            size={150}
-          />{" "}
-          <div
-            style={{
-              display: "block",
-              margin: "0 auto",
-              borderColor: "red",
-              marginTop: 10,
-            }}
-          >
-            <b>Loading...</b>
-          </div>
+          <CommonLoading />{" "}
         </div>
       ) : (
         <div class="timeline" style={{ backgroundColor: "#474e5d" }}>

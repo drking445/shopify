@@ -4,6 +4,22 @@ import enTranslations from "@shopify/polaris/locales/en.json";
 import { AppProvider, Button } from "@shopify/polaris";
 import { CommonLoading } from "react-loadingg";
 
+
+const report = (props) => <div>Hello!</div>;
+
+
+function reported(){
+
+  useEffect(() => {
+    if(true){
+
+    }
+  }, []);
+
+  return <div>Hi</div>;
+}
+
+
 function App() {
   const key = "g4xk1gooLdtYH1Rl9QsmniVVbnlvrhDlqUiDo59S";
   const [images, setImages] = useState([]);
